@@ -370,6 +370,7 @@ contract GTokenV6_3_2 is ERC20Upgradeable, ERC4626Upgradeable, OwnableUpgradeabl
                 PRECISION) / _maxAccPnlPerToken;
     }
 
+    // TODO
     // function gnsTokenToAssetsPrice() public view returns (uint price) {
     //     // GNS_PRECISION
     //     (bool success, bytes memory result) = gnsPriceProvider.addr.staticcall(gnsPriceProvider.signature);
@@ -783,6 +784,7 @@ contract GTokenV6_3_2 is ERC20Upgradeable, ERC4626Upgradeable, OwnableUpgradeabl
         emit AssetsReceived(sender, user, assets, assetsLessDeplete);
     }
 
+    // TODO
     // GNS mint / burn mechanism
     // function deplete(uint assets) external {
     //     require(assets <= assetsToDeplete, "AMOUNT_TOO_BIG");
@@ -812,6 +814,7 @@ contract GTokenV6_3_2 is ERC20Upgradeable, ERC4626Upgradeable, OwnableUpgradeabl
             lastDailyMintedGnsReset = block.timestamp;
         }
 
+        // TODO
         // uint amountGns = (assets * GNS_PRECISION) / gnsTokenToAssetsPrice();
         // dailyMintedGns += amountGns;
 
@@ -829,6 +832,7 @@ contract GTokenV6_3_2 is ERC20Upgradeable, ERC4626Upgradeable, OwnableUpgradeabl
         updateShareToAssetsPrice();
 
         totalRefilled += assets;
+        // TODO
         // totalRefilledGns += amountGns;
 
         // IGnsToken(gnsToken).mint(sender, amountGns);
