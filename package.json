@@ -17,5 +17,11 @@
     "hardhat-gas-reporter": "^1.0.8",
     "solidity-coverage": "^0.8.0",
     "typechain": "^8.3.0"
+  },
+  "dependencies": {
+    "@134dd3v/uniswap-v3-core-0.8-support": "^1.0.3",
+    "@chainlink/contracts": "^0.8.0",
+    "@openzeppelin/contracts": "^4.9.2",
+    "@openzeppelin/contracts-upgradeable": "^4.9.2"
   }
 }
