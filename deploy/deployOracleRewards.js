@@ -3,7 +3,12 @@ const { createDeployFunction } = require("../utils/deploy");
 
 const func = createDeployFunction({
   contractName: "GNSOracleRewardsV6_4_1",
-  afterDeploy: async () => {
+  afterDeploy: async ({
+    deployedContract,
+    getNamedAccounts,
+    deployments,
+    network,
+  }) => {
     await timeout(1500);
   },
 });

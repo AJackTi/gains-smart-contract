@@ -5,7 +5,12 @@ const constructorContracts = ["Owner"];
 
 const func = createDeployFunction({
   contractName: "GainsNetworkToken",
-  afterDeploy: async () => {
+  afterDeploy: async ({
+    deployedContract,
+    getNamedAccounts,
+    deployments,
+    network,
+  }) => {
     await timeout(1500);
   },
   getDeployArgs: async ({ dependencyContracts }) => {
