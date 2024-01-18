@@ -1,8 +1,11 @@
 const { timeout } = require("../utils/delay");
 const { createDeployFunction } = require("../utils/deploy");
 
+const constructorContracts = ["GFarmTradingStorageV5"];
+
 const func = createDeployFunction({
   contractName: "GNSReferralsV6_2",
+  dependencyNames: constructorContracts,
   afterDeploy: async ({
     deployedContract,
     getNamedAccounts,
@@ -11,13 +14,11 @@ const func = createDeployFunction({
   }) => {
     await timeout(1500);
   },
-  getDeployArgs: () => [
-    "0x8a28637be34be5c3BBdF893be8B8A387C2843cbc",
-    10,
-    33,
-    50,
-    10000000,
-  ],
+  getDeployArgs: async ({ dependencyContracts }) => {
+    return constructorContracts
+      .map((dependencyName) => dependencyContracts[dependencyName].address)
+      .concat([10, 33, 50, 10000000]);
+  },
 });
 
 module.exports = func;
