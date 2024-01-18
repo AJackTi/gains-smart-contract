@@ -2,7 +2,7 @@ const hre = require("hardhat");
 require("dotenv").config();
 const { Wallet } = require("ethers");
 
-const getExistingContractAddresses = (network) => {
+const getConfigs = (network) => {
   if (network.name === "mumbai") {
     if (process.env.ACCOUNT_KEYS?.split(",").length == 0) {
       return undefined;
@@ -10,11 +10,11 @@ const getExistingContractAddresses = (network) => {
     let owner = new Wallet(process.env.ACCOUNT_KEYS?.split(",")[0]).address;
 
     return {
-      Owner: { address: owner },
+      Owner: { value: owner },
     };
   }
 };
 
 module.exports = {
-  getExistingContractAddresses,
+  getConfigs,
 };

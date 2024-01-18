@@ -1,4 +1,4 @@
-const { getExistingContractAddresses } = require("../config/overwrite");
+const { getConfigs } = require("../config/config");
 
 async function deployContract(name, args, contractOptions = {}) {
   const contractFactory = await ethers.getContractFactory(
@@ -28,7 +28,7 @@ function createDeployFunction({
     const { deploy, get } = deployments;
     const { deployer } = await getNamedAccounts();
 
-    const dependencyContracts = getExistingContractAddresses(network);
+    const dependencyContracts = getConfigs(network);
 
     if (dependencyNames) {
       for (let i = 0; i < dependencyNames.length; i++) {
