@@ -1,7 +1,7 @@
 // GNSToken::addMinterRole: (add mint GNS role for trading contract)
 const hre = require("hardhat");
 
-async function addTradingContract(address, tradingContractAddress) {
+async function addTradingContract(address) {
   const { deployments, getNamedAccounts } = hre;
   const { read, execute, log } = deployments;
   const { deployer } = await getNamedAccounts();
@@ -11,8 +11,7 @@ async function addTradingContract(address, tradingContractAddress) {
       "GFarmTradingStorageV5",
       { from: deployer, log: true },
       "addTradingContract",
-      address,
-      tradingContractAddress
+      address
     );
   } catch (err) {
     console.log(
