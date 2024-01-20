@@ -5,7 +5,7 @@ import "./IGToken.sol";
 import "./PairsStorageInterfaceV6.sol";
 import "./ChainlinkFeedInterfaceV5.sol";
 
-pragma solidity 0.8.20;
+pragma solidity 0.8.7;
 pragma abicoder v2;
 
 interface PoolInterfaceV5 {

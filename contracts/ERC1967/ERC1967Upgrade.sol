@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.7;
 
 import "../beacon/IBeacon.sol";
 import "../utils/Address.sol";

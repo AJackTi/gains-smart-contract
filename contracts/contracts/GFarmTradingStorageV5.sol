@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.20;
+pragma solidity 0.8.7;
 
 import "../interfaces/TokenInterfaceV5.sol";
 import "../interfaces/AggregatorInterfaceV5.sol";

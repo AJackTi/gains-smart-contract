@@ -8,7 +8,7 @@ import "../interfaces/StorageInterfaceV5.sol";
 
 import "../libraries/PackingUtils.sol";
 
-pragma solidity 0.8.20;
+pragma solidity 0.8.7;
 
 contract GNSPriceAggregatorV6_4 is ChainlinkClient {
     using Chainlink for Chainlink.Request;

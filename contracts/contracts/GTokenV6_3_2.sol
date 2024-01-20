@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 import "../utils/ERC20Upgradeable.sol";
+import "../utils/IERC20Upgradeable.sol";
 import "../utils/ERC4626Upgradeable.sol";
 import "../utils/MathUpgradeable.sol";
 import "../utils/OwnableUpgradeable.sol";
@@ -10,9 +11,9 @@ import "../interfaces/INft.sol";
 import "../interfaces/IOpenTradesPnlFeed.sol";
 import "../libraries/ChainUtils.sol";
 
-pragma solidity 0.8.20;
+pragma solidity 0.8.7;
 
-contract GTokenV6_3_2 is ERC20Upgradeable, ERC4626Upgradeable, OwnableUpgradeable, IGToken {
+contract GTokenV6_3_2 is IERC20Upgradeable, ERC20Upgradeable, ERC4626Upgradeable, OwnableUpgradeable, IGToken {
     using MathUpgradeable for uint;
 
     INft public lockedDepositNft;

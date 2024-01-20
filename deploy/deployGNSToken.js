@@ -1,5 +1,6 @@
 const { timeout } = require("../utils/delay");
 const { createDeployFunction } = require("../utils/deploy");
+const { addMinterRole } = require("../utils/role");
 
 const constructorContracts = ["Owner"];
 
@@ -12,6 +13,8 @@ const func = createDeployFunction({
     network,
   }) => {
     await timeout(1500);
+
+    // await addMinterRole(deployedContract.address);
   },
   getDeployArgs: async ({ dependencyContracts }) => {
     return constructorContracts.map(

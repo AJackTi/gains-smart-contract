@@ -3,14 +3,10 @@ require("dotenv").config();
 const { Wallet } = require("ethers");
 
 async function main() {
-  if (process.env.ACCOUNT_KEYS?.split(",").length == 0) {
-    return;
-  }
-  let firstWallet = new Wallet(process.env.ACCOUNT_KEYS?.split(",")[0]).address;
+  const { getNamedAccounts } = hre;
+  const { deployer } = await getNamedAccounts();
 
-  const gns = await hre.ethers.deployContract("GainsNetworkToken", [
-    firstWallet,
-  ]);
+  const gns = await hre.ethers.deployContract("GainsNetworkToken", [deployer]);
 
   await gns.waitForDeployment();
 

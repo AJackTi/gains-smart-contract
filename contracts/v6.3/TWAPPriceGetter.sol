@@ -4,7 +4,7 @@ import "@134dd3v/uniswap-v3-core-0.8-support/contracts/libraries/TickMath.sol";
 import "@134dd3v/uniswap-v3-core-0.8-support/contracts/libraries/FixedPoint96.sol";
 import "@134dd3v/uniswap-v3-core-0.8-support/contracts/libraries/FullMath.sol";
 
-pragma solidity 0.8.20;
+pragma solidity 0.8.7;
 
 abstract contract TWAPPriceGetter {
     // Constants
