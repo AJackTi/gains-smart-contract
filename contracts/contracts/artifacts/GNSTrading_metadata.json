@@ -1,0 +1,1319 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "bool",
+						"name": "bypass",
+						"type": "bool"
+					}
+				],
+				"name": "BypassTriggerLinkUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "orderId",
+						"type": "uint256"
+					},
+					{
+						"components": [
+							{
+								"components": [
+									{
+										"internalType": "address",
+										"name": "trader",
+										"type": "address"
+									},
+									{
+										"internalType": "uint256",
+										"name": "pairIndex",
+										"type": "uint256"
+									},
+									{
+										"internalType": "uint256",
+										"name": "index",
+										"type": "uint256"
+									},
+									{
+										"internalType": "uint256",
+										"name": "initialPosToken",
+										"type": "uint256"
+									},
+									{
+										"internalType": "uint256",
+										"name": "positionSizeDai",
+										"type": "uint256"
+									},
+									{
+										"internalType": "uint256",
+										"name": "openPrice",
+										"type": "uint256"
+									},
+									{
+										"internalType": "bool",
+										"name": "buy",
+										"type": "bool"
+									},
+									{
+										"internalType": "uint256",
+										"name": "leverage",
+										"type": "uint256"
+									},
+									{
+										"internalType": "uint256",
+										"name": "tp",
+										"type": "uint256"
+									},
+									{
+										"internalType": "uint256",
+										"name": "sl",
+										"type": "uint256"
+									}
+								],
+								"internalType": "struct IGNSTradingStorage.Trade",
+								"name": "trade",
+								"type": "tuple"
+							},
+							{
+								"internalType": "uint256",
+								"name": "block",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "wantedPrice",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "slippageP",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "spreadReductionP",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "tokenId",
+								"type": "uint256"
+							}
+						],
+						"indexed": false,
+						"internalType": "struct IGNSTradingStorage.PendingMarketOrder",
+						"name": "order",
+						"type": "tuple"
+					}
+				],
+				"name": "ChainlinkCallbackTimeout",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "trader",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "pairIndex",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "CouldNotCloseTrade",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "bool",
+						"name": "done",
+						"type": "bool"
+					}
+				],
+				"name": "Done",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint8",
+						"name": "version",
+						"type": "uint8"
+					}
+				],
+				"name": "Initialized",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "orderId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "trader",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "pairIndex",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "bool",
+						"name": "open",
+						"type": "bool"
+					}
+				],
+				"name": "MarketOrderInitiated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "orderId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "trader",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "pairIndex",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "bool",
+						"name": "byPassesLinkCost",
+						"type": "bool"
+					}
+				],
+				"name": "NftOrderInitiated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "NumberUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "trader",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "pairIndex",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "OpenLimitCanceled",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "trader",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "pairIndex",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "OpenLimitPlaced",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "trader",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "pairIndex",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newPrice",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newTp",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newSl",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "maxSlippageP",
+						"type": "uint256"
+					}
+				],
+				"name": "OpenLimitUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "bool",
+						"name": "paused",
+						"type": "bool"
+					}
+				],
+				"name": "Paused",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "trader",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "pairIndex",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newSl",
+						"type": "uint256"
+					}
+				],
+				"name": "SlUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "trader",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "pairIndex",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newTp",
+						"type": "uint256"
+					}
+				],
+				"name": "TpUpdated",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "_msgSender",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "borrowingFees",
+				"outputs": [
+					{
+						"internalType": "contract IGNSBorrowingFees",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "bypassTriggerLink",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "pairIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "cancelOpenLimitOrder",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "pairIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "closeTradeMarket",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_order",
+						"type": "uint256"
+					}
+				],
+				"name": "closeTradeMarketTimeout",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "collateralConfig",
+				"outputs": [
+					{
+						"internalType": "uint128",
+						"name": "precision",
+						"type": "uint128"
+					},
+					{
+						"internalType": "uint128",
+						"name": "precisionDelta",
+						"type": "uint128"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "trader",
+						"type": "address"
+					},
+					{
+						"internalType": "bytes",
+						"name": "call_data",
+						"type": "bytes"
+					}
+				],
+				"name": "delegatedAction",
+				"outputs": [
+					{
+						"internalType": "bytes",
+						"name": "",
+						"type": "bytes"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "delegations",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "done",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "packed",
+						"type": "uint256"
+					}
+				],
+				"name": "executeNftOrder",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract IGNSTradingStorage",
+						"name": "_storageT",
+						"type": "address"
+					},
+					{
+						"internalType": "contract IGNSOracleRewards",
+						"name": "_oracleRewards",
+						"type": "address"
+					},
+					{
+						"internalType": "contract IGNSBorrowingFees",
+						"name": "_borrowingFees",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_maxPosDai",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_marketOrdersTimeout",
+						"type": "uint256"
+					}
+				],
+				"name": "initialize",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract IGNSMultiCollatDiamond",
+						"name": "_multiCollatDiamond",
+						"type": "address"
+					}
+				],
+				"name": "initializeV2",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "isDone",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "isPaused",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "marketOrdersTimeout",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "maxPosDai",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "multiCollatDiamond",
+				"outputs": [
+					{
+						"internalType": "contract IGNSMultiCollatDiamond",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "trader",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "pairIndex",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "index",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "initialPosToken",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "positionSizeDai",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "openPrice",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "buy",
+								"type": "bool"
+							},
+							{
+								"internalType": "uint256",
+								"name": "leverage",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "tp",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "sl",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct IGNSTradingStorage.Trade",
+						"name": "t",
+						"type": "tuple"
+					},
+					{
+						"internalType": "enum IGNSOracleRewards.OpenLimitOrderType",
+						"name": "orderType",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint256",
+						"name": "slippageP",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "referrer",
+						"type": "address"
+					}
+				],
+				"name": "openTrade",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_order",
+						"type": "uint256"
+					}
+				],
+				"name": "openTradeMarketTimeout",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "oracleRewards",
+				"outputs": [
+					{
+						"internalType": "contract IGNSOracleRewards",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "pairInfos",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "pause",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "referrals",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "removeDelegate",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "bypass",
+						"type": "bool"
+					}
+				],
+				"name": "setBypassTriggerLink",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "delegate",
+						"type": "address"
+					}
+				],
+				"name": "setDelegate",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "setMarketOrdersTimeout",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "setMaxPosDai",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "storageT",
+				"outputs": [
+					{
+						"internalType": "contract IGNSTradingStorage",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "pairIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "price",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "sl",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "maxSlippageP",
+						"type": "uint256"
+					}
+				],
+				"name": "updateOpenLimitOrder",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "pairIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "newSl",
+						"type": "uint256"
+					}
+				],
+				"name": "updateSl",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "pairIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "newTp",
+						"type": "uint256"
+					}
+				],
+				"name": "updateTp",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"custom:oz-upgrades-unsafe-allow": "external-library-linking delegatecall",
+			"custom:version": "7",
+			"kind": "dev",
+			"methods": {
+				"constructor": {
+					"custom:oz-upgrades-unsafe-allow": "constructor"
+				}
+			},
+			"stateVariables": {
+				"borrowingFees": {
+					"custom:deprecated": ""
+				},
+				"referrals": {
+					"custom:deprecated": ""
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/contracts/GNSTrading.sol": "GNSTrading"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol": {
+			"keccak256": "0x89be10e757d242e9b18d5a32c9fbe2019f6d63052bbe46397a430a1d60d7f794",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f103ee2e4aecd37aac6ceefe670709cdd7613dee25fa2d4d9feaf7fc0aaa155e",
+				"dweb:/ipfs/QmRiNZLoJk5k3HPMYGPGjZFd2ke1ZxjhJZkM45Ec9GH9hv"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol": {
+			"keccak256": "0x9c80f545915582e63fe206c6ce27cbe85a86fc10b9cd2a0e8c9488fb7c2ee422",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://310136ad60820af4177a11a61d77a3686faf5fca4942b600e08fc940db38396b",
+				"dweb:/ipfs/QmbCzMNSTL7Zi7M4UCSqBrkHtp4jjxUnGbkneCZKdR1qeq"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC20/IERC20.sol": {
+			"keccak256": "0x287b55befed2961a7eabd7d7b1b2839cbca8a5b80ef8dcbb25ed3d4c2002c305",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://bd39944e8fc06be6dbe2dd1d8449b5336e23c6a7ba3e8e9ae5ae0f37f35283f5",
+				"dweb:/ipfs/QmPV3FGYjVwvKSgAXKUN3r9T9GwniZz83CxBpM7vyj2G53"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol": {
+			"keccak256": "0x8de418a5503946cabe331f35fe242d3201a73f67f77aaeb7110acb1f30423aca",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5a376d3dda2cb70536c0a45c208b29b34ac560c4cb4f513a42079f96ba47d2dd",
+				"dweb:/ipfs/QmZQg6gn1sUpM8wHzwNvSnihumUCAhxD119MpXeKp8B9s8"
+			]
+		},
+		"contracts/contracts/GNSTrading.sol": {
+			"keccak256": "0xaceb28fdb5d6857ee3425d207f993b367a056f4cba8ee8063e46f8b8405d4e2f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://3a57c29a508e7b16ab987c8c8be0eca1cd69a4fb448a0a10d826e706d0223d90",
+				"dweb:/ipfs/QmbkbDHpFjo6s63Y3gnwTNbtTtDSf4hzpvrupoGpp1rugD"
+			]
+		},
+		"contracts/interfaces/ChainlinkFeedInterfaceV5.sol": {
+			"keccak256": "0x4f39b41b3bdadfb7233fac30c60cedfd20d534ba536c0b016818dd01b47728b1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://2a60d49dba122ff4910e6e62438c4ca0c24f37628205e412815d39dfa2e90a62",
+				"dweb:/ipfs/QmNxvD1zqQVBUJedo7tSBeva6T4K9PMZLadhL1hNCnqWgc"
+			]
+		},
+		"contracts/interfaces/IArbSys.sol": {
+			"keccak256": "0xce4af00225a25d02f66a33be0a71c3b3e4e462981c1c5087a7069d7ec84086b7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://eda165e29bdf4a351f936c03d7f1858e87f197983c07e7f5a91b7d30b38279eb",
+				"dweb:/ipfs/QmdvL4imCYAjEgjAuVscEzjYnuD5CTBWe6DVpydUHYntrf"
+			]
+		},
+		"contracts/interfaces/IChainlinkFeed.sol": {
+			"keccak256": "0xf938b3410b7c09a0a36dc4348cfed8dd66899af2f4885d6cec1526b1e2533c4b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://02b8010df83580983b4b0776757e8f76b22bb342572a07097cc8404e69c96cc5",
+				"dweb:/ipfs/QmWogkFHYQrua7ahvdPYB2CAJPXJWB3KHGkemkVbPNFSf9"
+			]
+		},
+		"contracts/interfaces/IGNSBorrowingFees.sol": {
+			"keccak256": "0xf23650c42b1debfb35535c7873430cef017310e579f93eb78dd0f29ce947879a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://21073630e7f920ae4021af9b9dcd80df4ad8c3e2f8d57a8716bfab16f86426dc",
+				"dweb:/ipfs/QmevtSDmvsLBt58ieCTMyyGRFHxzEvtwravQHZvRffbVS5"
+			]
+		},
+		"contracts/interfaces/IGNSMultiCollatDiamond.sol": {
+			"keccak256": "0xc475c67649e80b6c1110d09395f30cf091210e96a218f03a58cf3675e1add718",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://2389025698979a371e5148869db87a2269b834b591f49fd5e126845ecc1c0018",
+				"dweb:/ipfs/QmWUbpbkmkZafDcB5sFHVErDA33gphqzDcKQo9Xx2bzUg1"
+			]
+		},
+		"contracts/interfaces/IGNSOracleRewards.sol": {
+			"keccak256": "0xc3d4ed7d930f68603d9e173f2e030ff5fdbb69378b9403ca582ae2752c6bcd26",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://2d67c6e176ecb514a8801caea9bdebcdd2531f844a7b6547f368ec0931db8d4f",
+				"dweb:/ipfs/QmTx8i3nM55d6pGxb2r3TxS4CKER7X8SCvAVTL7iskukBG"
+			]
+		},
+		"contracts/interfaces/IGNSPriceAggregator.sol": {
+			"keccak256": "0xb5b270de616f373bc753a2252afdfc46dddbbb139e8a330db8199c21bceaac1f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://dadbb8dfaaf14068c87b1311da58239755fb110b3589c98522f82fec7fd8032e",
+				"dweb:/ipfs/QmUrzbBAfTYUsp7hzvq8BuEBvsKYY88Dv8jk2WjnQxvHaG"
+			]
+		},
+		"contracts/interfaces/IGNSTrading.sol": {
+			"keccak256": "0x732e9b3dd2a9f3e656afdc3b06a858fc73a752e406a7c625921ed3d1ddb3c00e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://803d3a15ca419d03d121efe81b26c71750edc0efb468912f88806c8bd50ff845",
+				"dweb:/ipfs/QmUHWfu5WK9AFsj9gy4dWToD4BhSBhPDNL5GMD6Fg3Ghhb"
+			]
+		},
+		"contracts/interfaces/IGNSTradingCallbacks.sol": {
+			"keccak256": "0x4849a740c1d4a03c92ee34a401aebc1f7a502fa2af3de0cb5fc4d60b421c523a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0c0c6d92a28faa37ffc74694862e7808bbfb150bc8abb767a7c032d638157ee5",
+				"dweb:/ipfs/QmQWrxVsyHzcKNJ3abJ45bccKmnUgJBXYLeUAyjsWJYzPr"
+			]
+		},
+		"contracts/interfaces/IGNSTradingStorage.sol": {
+			"keccak256": "0x492bd75f4938685858b8455a73188ae03363b87a3ea37c399bdc858b851cb157",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://a1e3d7fe7c5c55c4a4a2562b98cc1ba9d783aa230b35980e565ebfb95459191a",
+				"dweb:/ipfs/QmVtPfDEiebruPuXJR3TFQwuRwDVHCFMAho7hzmzKfovbZ"
+			]
+		},
+		"contracts/interfaces/IGToken.sol": {
+			"keccak256": "0xe1c4eac213e8cc146ef165a92ff5b652c250d2340d4954b7647eed73e601757f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0729ffab9cb7ff01929bff075bb7fef5ffa99c7f188a8f88e90879541119b041",
+				"dweb:/ipfs/QmfZWp9mbPovxryc6NB5ZKYVCVyfZaKNfrf4LcQvYR7DZQ"
+			]
+		},
+		"contracts/interfaces/NftInterfaceV5.sol": {
+			"keccak256": "0x1aba6c110d3893750103e30bd9556f785887576264ba70aa2c4f719eda7de3c4",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://37658a80ae58b36a7b30260fd3d315aa6d54f44d8b4c4adc0c43d041492fab81",
+				"dweb:/ipfs/QmRiq4ShmpJt7oD8V9esz7mKLdAcPALXLLqyWMU4ApCmn4"
+			]
+		},
+		"contracts/interfaces/PairsStorageInterfaceV6.sol": {
+			"keccak256": "0xa72155fc2e8e0e6963c67710b42e30d503a3b2b6611bddbadc55919f9f7bc68e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://dd0cb1344c6cc75846bdb284ae15295cc78b9281cb449692b6bcb7e6a4e34636",
+				"dweb:/ipfs/QmTA2G2cwthfLuSWpvobcXrU8hxJ72vjmccHHFQoH9pVke"
+			]
+		},
+		"contracts/interfaces/StorageInterfaceV5.sol": {
+			"keccak256": "0xb878c2794b85f554cd41e925a457e789e71b2512fdc0e39ce4552c1194094fab",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://88844b1700ea33a85b10c3093d2b75d7d30bb8b645d4234ef3f97ae18a8e30af",
+				"dweb:/ipfs/QmQ8UPLk9BXuYi5sHzWAVuqtPsXn7TTcQdHzfpWjsmZ8KL"
+			]
+		},
+		"contracts/interfaces/TokenInterfaceV5.sol": {
+			"keccak256": "0x0b1aef35747e180443d65683c29cebff6cc9eaaac364f29f1a619f68b8df9b82",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://be30cb6d9e8712d4e19cb0615d56576abb0b34e361e0fe7f997d31290c3a0a11",
+				"dweb:/ipfs/QmQapnTv4eyccgvAeRzgShnj2s7nWmAjiaR1kTfnNqdvq6"
+			]
+		},
+		"contracts/interfaces/libraries/IAddressStoreUtils.sol": {
+			"keccak256": "0x8078a5c0d7a6e5ef41b7ac665b69c3ee7ccde8b7c6f6b349d980a4e8b1dfc0d5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://bdc163b9845202f9d3f9442a9156321f5cb24aa19b95c5919265ffd44d7890a5",
+				"dweb:/ipfs/QmRk1J52R7NktgcE53ruPVPgMuCixq1F8LESHMD7ui3DrU"
+			]
+		},
+		"contracts/interfaces/libraries/IFeeTiersUtils.sol": {
+			"keccak256": "0xcc7790f7053c9edc579b095572e9cd016e9c1c4dd19631dc0e50b1e9286305fe",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://abaf9f73dc1ff8090392757e95b7f1364f7e08a45a31b8ce18cd1b23b9b00d15",
+				"dweb:/ipfs/QmXDAyTaiSi2bRWpSvsvU3BT55epfa1cLT53A3YxNsyS4e"
+			]
+		},
+		"contracts/interfaces/libraries/IPairsStorageUtils.sol": {
+			"keccak256": "0xfc199fab722276c1dee4a3faba4c7cd8edab59036696f13b855a9d9b7ccc3241",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c6dc619e44af2a9154272c63048292224deecde65f6e3bff55d6a290af228579",
+				"dweb:/ipfs/QmUK8ewWNFo6LMCBz33dVebcK8vkjGj2gqyGc2Xtozx51F"
+			]
+		},
+		"contracts/interfaces/libraries/IPriceImpactUtils.sol": {
+			"keccak256": "0x012f84d8462777bbe61a2d2e785ce0eba0ebe5a7efbc9f45e452f19e54b96f37",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ed475ee459fad8d09883d40e9acbe10b7eede763613d57009e10795786686005",
+				"dweb:/ipfs/QmUxxKqYexJBTGLp5RBmaRupB4GtK2cbxEJDaHnRPsRMnb"
+			]
+		},
+		"contracts/interfaces/libraries/IReferralsUtils.sol": {
+			"keccak256": "0xca85a946190c714795bbc6343c1c3696d1064f284e4ca84d0dee87d552092b69",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f079a1276dc0ed10611521fbcb723bd77bf3159a6248c125fef3ac1e45aea7d7",
+				"dweb:/ipfs/QmViZicjSodh1Kw1AJmYzx1jPeD1h8yhYj1Msw1h2TPGDg"
+			]
+		},
+		"contracts/libraries/ChainUtils.sol": {
+			"keccak256": "0x0dc4bd22d718155e7f7471ffb0776c8df4fa0e192999c08aa3572a2f839319d4",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://2916721ac92a4408f2aeaaf344411d7a1df1ae58fdfca7088faba7b57542efc2",
+				"dweb:/ipfs/QmdUJjsFgD4M5N23n69v9yg2xsoLrsLr9TpspkKgeK6Xh8"
+			]
+		},
+		"contracts/libraries/CollateralUtils.sol": {
+			"keccak256": "0xe4a5703d20c46acd083cb114ddefb90bd6dd6152ba0502dfe1fa9596b18c8a79",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c63850a54d6dde96253e7a9cd5a241de6bbb027024a2f3c88764d7d53ed65616",
+				"dweb:/ipfs/QmeD7iUuqZEpzSETGEGzRUWquGkiAPXKpVLgF2WxjA3A2w"
+			]
+		},
+		"contracts/libraries/IERC20.sol": {
+			"keccak256": "0x350dcd586904fed97084a701c2eb23532e733a68cdbed18b818c88dc98ea49e1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://a88c795eec255783310a0e1028239a7d2ca335bb24d0a3235b1c4390e7deacfa",
+				"dweb:/ipfs/QmQtauRgJc8xEh2NjaPF1KJEmF5AFu7wfnaKvjRqiRe96D"
+			]
+		},
+		"contracts/libraries/PackingUtils.sol": {
+			"keccak256": "0xdcd2340e726bdea11bbd2f77d8240e2641b12042b09038b6b4179d9c0784246b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8aa0b934ec0366528401f1ef67aee9bceffedaafc44b9169b18cc3ea7e99466d",
+				"dweb:/ipfs/QmTF3UGimrC1UhK3uzDLvejsSigRr1TqTQ1gietGijiVEU"
+			]
+		},
+		"contracts/libraries/TradeUtils.sol": {
+			"keccak256": "0x92d3284521659bf0fcd6c4f19405deea55167883384af672ca7f335c092c5da7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b335d52a52545ef948ea26005ff5d4e245bd3f11206b8a2d5246236344bc201e",
+				"dweb:/ipfs/QmUAtqnsUEjQsKVUfhJ9m9cpBJj81pYUHJ98eLpvaJsJAR"
+			]
+		},
+		"contracts/misc/Delegatable.sol": {
+			"keccak256": "0x77f46d97db8e1af668ebb760d64f194e502abcaee5c44c8022846e123f467905",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://4139782ff88d47ada65395cbbd0b85ba8c96a3de055e95da18cc2bb8816fcf1c",
+				"dweb:/ipfs/QmQDpqpgKbUr1sa83F5P8AcYm8w3MYPjqa7y5mTKLhwcek"
+			]
+		}
+	},
+	"version": 1
+}

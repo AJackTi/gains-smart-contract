@@ -1,0 +1,1131 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "contract StorageInterfaceV5",
+						"name": "_storageT",
+						"type": "address"
+					},
+					{
+						"internalType": "contract IGNSOracleRewardsV6_4_1",
+						"name": "_oracleRewards",
+						"type": "address"
+					},
+					{
+						"internalType": "contract GNSPairInfosInterfaceV6",
+						"name": "_pairInfos",
+						"type": "address"
+					},
+					{
+						"internalType": "contract GNSReferralsInterfaceV6_2",
+						"name": "_referrals",
+						"type": "address"
+					},
+					{
+						"internalType": "contract GNSBorrowingFeesInterfaceV6_4",
+						"name": "_borrowingFees",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_maxPosDai",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_marketOrdersTimeout",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "bool",
+						"name": "bypass",
+						"type": "bool"
+					}
+				],
+				"name": "BypassTriggerLinkUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "orderId",
+						"type": "uint256"
+					},
+					{
+						"components": [
+							{
+								"components": [
+									{
+										"internalType": "address",
+										"name": "trader",
+										"type": "address"
+									},
+									{
+										"internalType": "uint256",
+										"name": "pairIndex",
+										"type": "uint256"
+									},
+									{
+										"internalType": "uint256",
+										"name": "index",
+										"type": "uint256"
+									},
+									{
+										"internalType": "uint256",
+										"name": "initialPosToken",
+										"type": "uint256"
+									},
+									{
+										"internalType": "uint256",
+										"name": "positionSizeDai",
+										"type": "uint256"
+									},
+									{
+										"internalType": "uint256",
+										"name": "openPrice",
+										"type": "uint256"
+									},
+									{
+										"internalType": "bool",
+										"name": "buy",
+										"type": "bool"
+									},
+									{
+										"internalType": "uint256",
+										"name": "leverage",
+										"type": "uint256"
+									},
+									{
+										"internalType": "uint256",
+										"name": "tp",
+										"type": "uint256"
+									},
+									{
+										"internalType": "uint256",
+										"name": "sl",
+										"type": "uint256"
+									}
+								],
+								"internalType": "struct StorageInterfaceV5.Trade",
+								"name": "trade",
+								"type": "tuple"
+							},
+							{
+								"internalType": "uint256",
+								"name": "block",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "wantedPrice",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "slippageP",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "spreadReductionP",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "tokenId",
+								"type": "uint256"
+							}
+						],
+						"indexed": false,
+						"internalType": "struct StorageInterfaceV5.PendingMarketOrder",
+						"name": "order",
+						"type": "tuple"
+					}
+				],
+				"name": "ChainlinkCallbackTimeout",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "trader",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "pairIndex",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "CouldNotCloseTrade",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "bool",
+						"name": "done",
+						"type": "bool"
+					}
+				],
+				"name": "Done",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "orderId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "trader",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "pairIndex",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "bool",
+						"name": "open",
+						"type": "bool"
+					}
+				],
+				"name": "MarketOrderInitiated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "orderId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "trader",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "pairIndex",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "bool",
+						"name": "byPassesLinkCost",
+						"type": "bool"
+					}
+				],
+				"name": "NftOrderInitiated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "NumberUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "trader",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "pairIndex",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "OpenLimitCanceled",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "trader",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "pairIndex",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "OpenLimitPlaced",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "trader",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "pairIndex",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newPrice",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newTp",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newSl",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "maxSlippageP",
+						"type": "uint256"
+					}
+				],
+				"name": "OpenLimitUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "bool",
+						"name": "paused",
+						"type": "bool"
+					}
+				],
+				"name": "Paused",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "trader",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "pairIndex",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newSl",
+						"type": "uint256"
+					}
+				],
+				"name": "SlUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "trader",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "pairIndex",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newTp",
+						"type": "uint256"
+					}
+				],
+				"name": "TpUpdated",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "_msgSender",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "borrowingFees",
+				"outputs": [
+					{
+						"internalType": "contract GNSBorrowingFeesInterfaceV6_4",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "bypassTriggerLink",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "pairIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "cancelOpenLimitOrder",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "pairIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "closeTradeMarket",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_order",
+						"type": "uint256"
+					}
+				],
+				"name": "closeTradeMarketTimeout",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "trader",
+						"type": "address"
+					},
+					{
+						"internalType": "bytes",
+						"name": "call_data",
+						"type": "bytes"
+					}
+				],
+				"name": "delegatedAction",
+				"outputs": [
+					{
+						"internalType": "bytes",
+						"name": "",
+						"type": "bytes"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "delegations",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "done",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "packed",
+						"type": "uint256"
+					}
+				],
+				"name": "executeNftOrder",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "isDone",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "isPaused",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "marketOrdersTimeout",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "maxPosDai",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "trader",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "pairIndex",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "index",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "initialPosToken",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "positionSizeDai",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "openPrice",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "buy",
+								"type": "bool"
+							},
+							{
+								"internalType": "uint256",
+								"name": "leverage",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "tp",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "sl",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct StorageInterfaceV5.Trade",
+						"name": "t",
+						"type": "tuple"
+					},
+					{
+						"internalType": "enum IGNSOracleRewardsV6_4_1.OpenLimitOrderType",
+						"name": "orderType",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint256",
+						"name": "slippageP",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "referrer",
+						"type": "address"
+					}
+				],
+				"name": "openTrade",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_order",
+						"type": "uint256"
+					}
+				],
+				"name": "openTradeMarketTimeout",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "oracleRewards",
+				"outputs": [
+					{
+						"internalType": "contract IGNSOracleRewardsV6_4_1",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "pairInfos",
+				"outputs": [
+					{
+						"internalType": "contract GNSPairInfosInterfaceV6",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "pause",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "referrals",
+				"outputs": [
+					{
+						"internalType": "contract GNSReferralsInterfaceV6_2",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "removeDelegate",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "bypass",
+						"type": "bool"
+					}
+				],
+				"name": "setBypassTriggerLink",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "delegate",
+						"type": "address"
+					}
+				],
+				"name": "setDelegate",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "setMarketOrdersTimeout",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "setMaxPosDai",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "storageT",
+				"outputs": [
+					{
+						"internalType": "contract StorageInterfaceV5",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "pairIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "price",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "sl",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "maxSlippageP",
+						"type": "uint256"
+					}
+				],
+				"name": "updateOpenLimitOrder",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "pairIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "newSl",
+						"type": "uint256"
+					}
+				],
+				"name": "updateSl",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "pairIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "newTp",
+						"type": "uint256"
+					}
+				],
+				"name": "updateTp",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/contracts/GNSTradingV6_4_1.sol": "GNSTradingV6_4_1"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/contracts/GNSTradingV6_4_1.sol": {
+			"keccak256": "0x88b689c3975943cdf9d1846079321c943199b6f45f1e0fbba6622f51a0324407",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6ff66c847f96f15da33894be0b8876147803341b94b7d90661b60195e0209bc2",
+				"dweb:/ipfs/Qmf4xBDRU2CuAgq1Uw8bAG8pcfb8rbfnQoeGdPr78cPt5v"
+			]
+		},
+		"contracts/interfaces/ChainlinkFeedInterfaceV5.sol": {
+			"keccak256": "0x4f39b41b3bdadfb7233fac30c60cedfd20d534ba536c0b016818dd01b47728b1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://2a60d49dba122ff4910e6e62438c4ca0c24f37628205e412815d39dfa2e90a62",
+				"dweb:/ipfs/QmNxvD1zqQVBUJedo7tSBeva6T4K9PMZLadhL1hNCnqWgc"
+			]
+		},
+		"contracts/interfaces/GNSBorrowingFeesInterfaceV6_4.sol": {
+			"keccak256": "0x45e49a29961376e50a705047ffcf736885fe69fa9be03e40140102544300cb2b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://1180540c72624715d0ab1835bbd5bbb54ba1770e7a166a7c3d6706df9cca5b9a",
+				"dweb:/ipfs/QmdAeop6dLbN4m3Xr5nzhZgEwefVRbf8qhUCzhFMU6kEjY"
+			]
+		},
+		"contracts/interfaces/GNSPairInfosInterfaceV6.sol": {
+			"keccak256": "0x7f6341ee7fb757eba372d876035758b9f3ad043299353787ea9fd3964c53be4c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://2a31791171b6e172be31a9779459cfcbbe1ca12cbf2b086da362543d7b89b130",
+				"dweb:/ipfs/QmNz1yHLzd6yV5KHc6pEYUvF92opVSvhN58E47voDjGYBs"
+			]
+		},
+		"contracts/interfaces/GNSReferralsInterfaceV6_2.sol": {
+			"keccak256": "0xdb14be0f281b38f10b8a2a5e4bb58fd9290ac5580680e8d92cb717b61f38b962",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d40f206b3db4250cb9259fb85709749cc1f50859e0c096c2699e301110c2547f",
+				"dweb:/ipfs/QmSVGXSsXijgmUxdwUYVymuALS7U5c352zfoCi5Q86d4Vt"
+			]
+		},
+		"contracts/interfaces/IArbSys.sol": {
+			"keccak256": "0xce4af00225a25d02f66a33be0a71c3b3e4e462981c1c5087a7069d7ec84086b7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://eda165e29bdf4a351f936c03d7f1858e87f197983c07e7f5a91b7d30b38279eb",
+				"dweb:/ipfs/QmdvL4imCYAjEgjAuVscEzjYnuD5CTBWe6DVpydUHYntrf"
+			]
+		},
+		"contracts/interfaces/IGNSOracleRewardsV6_4_1.sol": {
+			"keccak256": "0xfecddbf188240437e0730d4dd7fd0b6306d5a07049e1fc59a2cc0d95a1399108",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://4c8ad050899eb9d88ed00b9edd65a9f562249d8ccc6e6a27ae4abb449fa6c7c5",
+				"dweb:/ipfs/QmUaZfzSQQnm2TmBpj5jBDxxHAYns4Cz4MPJZbZPsRRG1L"
+			]
+		},
+		"contracts/interfaces/IGToken.sol": {
+			"keccak256": "0xe1c4eac213e8cc146ef165a92ff5b652c250d2340d4954b7647eed73e601757f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0729ffab9cb7ff01929bff075bb7fef5ffa99c7f188a8f88e90879541119b041",
+				"dweb:/ipfs/QmfZWp9mbPovxryc6NB5ZKYVCVyfZaKNfrf4LcQvYR7DZQ"
+			]
+		},
+		"contracts/interfaces/NftInterfaceV5.sol": {
+			"keccak256": "0x1aba6c110d3893750103e30bd9556f785887576264ba70aa2c4f719eda7de3c4",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://37658a80ae58b36a7b30260fd3d315aa6d54f44d8b4c4adc0c43d041492fab81",
+				"dweb:/ipfs/QmRiq4ShmpJt7oD8V9esz7mKLdAcPALXLLqyWMU4ApCmn4"
+			]
+		},
+		"contracts/interfaces/PairsStorageInterfaceV6.sol": {
+			"keccak256": "0xa72155fc2e8e0e6963c67710b42e30d503a3b2b6611bddbadc55919f9f7bc68e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://dd0cb1344c6cc75846bdb284ae15295cc78b9281cb449692b6bcb7e6a4e34636",
+				"dweb:/ipfs/QmTA2G2cwthfLuSWpvobcXrU8hxJ72vjmccHHFQoH9pVke"
+			]
+		},
+		"contracts/interfaces/StorageInterfaceV5.sol": {
+			"keccak256": "0xb878c2794b85f554cd41e925a457e789e71b2512fdc0e39ce4552c1194094fab",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://88844b1700ea33a85b10c3093d2b75d7d30bb8b645d4234ef3f97ae18a8e30af",
+				"dweb:/ipfs/QmQ8UPLk9BXuYi5sHzWAVuqtPsXn7TTcQdHzfpWjsmZ8KL"
+			]
+		},
+		"contracts/interfaces/TokenInterfaceV5.sol": {
+			"keccak256": "0x0b1aef35747e180443d65683c29cebff6cc9eaaac364f29f1a619f68b8df9b82",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://be30cb6d9e8712d4e19cb0615d56576abb0b34e361e0fe7f997d31290c3a0a11",
+				"dweb:/ipfs/QmQapnTv4eyccgvAeRzgShnj2s7nWmAjiaR1kTfnNqdvq6"
+			]
+		},
+		"contracts/libraries/ChainUtils.sol": {
+			"keccak256": "0x0dc4bd22d718155e7f7471ffb0776c8df4fa0e192999c08aa3572a2f839319d4",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://2916721ac92a4408f2aeaaf344411d7a1df1ae58fdfca7088faba7b57542efc2",
+				"dweb:/ipfs/QmdUJjsFgD4M5N23n69v9yg2xsoLrsLr9TpspkKgeK6Xh8"
+			]
+		},
+		"contracts/libraries/PackingUtils.sol": {
+			"keccak256": "0xdcd2340e726bdea11bbd2f77d8240e2641b12042b09038b6b4179d9c0784246b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8aa0b934ec0366528401f1ef67aee9bceffedaafc44b9169b18cc3ea7e99466d",
+				"dweb:/ipfs/QmTF3UGimrC1UhK3uzDLvejsSigRr1TqTQ1gietGijiVEU"
+			]
+		},
+		"contracts/libraries/TradeUtils.sol": {
+			"keccak256": "0x92d3284521659bf0fcd6c4f19405deea55167883384af672ca7f335c092c5da7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b335d52a52545ef948ea26005ff5d4e245bd3f11206b8a2d5246236344bc201e",
+				"dweb:/ipfs/QmUAtqnsUEjQsKVUfhJ9m9cpBJj81pYUHJ98eLpvaJsJAR"
+			]
+		},
+		"contracts/v6.2/Delegatable.sol": {
+			"keccak256": "0xf67893f7af2b8332c01b808ba21439fd71de5a4853419d6774ea7c04d7c94c08",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8d3411d9173c4ca0ed042af3ce81074fbc52180071dab1ef3b75872285c42e1d",
+				"dweb:/ipfs/QmeVF6HotqNVL3DirNZAbLtdtHAgJbDeBsRaiW9ZqruTn5"
+			]
+		}
+	},
+	"version": 1
+}
