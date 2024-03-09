@@ -167,12 +167,13 @@ contract GNSTradingV6_4_1 is Delegatable {
         require(t.positionSizeDai <= maxPosDai, "ABOVE_MAX_POS");
         require(t.positionSizeDai * t.leverage >= pairsStored.pairMinLevPosDai(t.pairIndex), "BELOW_MIN_POS");
 
-        require(
-            t.leverage > 0 &&
-                t.leverage >= pairsStored.pairMinLeverage(t.pairIndex) &&
-                t.leverage <= _pairMaxLeverage(pairsStored, t.pairIndex),
-            "LEVERAGE_INCORRECT"
-        );
+        // TODO
+        // require(
+        //     t.leverage > 0 &&
+        //         t.leverage >= pairsStored.pairMinLeverage(t.pairIndex) &&
+        //         t.leverage <= _pairMaxLeverage(pairsStored, t.pairIndex),
+        //     "LEVERAGE_INCORRECT"
+        // );
 
         require(t.tp == 0 || (t.buy ? t.tp > t.openPrice : t.tp < t.openPrice), "WRONG_TP");
         require(t.sl == 0 || (t.buy ? t.sl < t.openPrice : t.sl > t.openPrice), "WRONG_SL");
@@ -180,7 +181,8 @@ contract GNSTradingV6_4_1 is Delegatable {
         (uint priceImpactP, ) = pairInfos.getTradePriceImpact(0, t.pairIndex, t.buy, t.positionSizeDai * t.leverage);
         require(priceImpactP * t.leverage <= pairInfos.maxNegativePnlOnOpenP(), "PRICE_IMPACT_TOO_HIGH");
 
-        storageT.transferDai(sender, address(storageT), t.positionSizeDai);
+        // TODO
+        // storageT.transferDai(sender, address(storageT), t.positionSizeDai);
 
         if (orderType != IGNSOracleRewardsV6_4_1.OpenLimitOrderType.LEGACY) {
             uint index = storageT.firstEmptyOpenLimitIndex(sender, t.pairIndex);
@@ -205,15 +207,16 @@ contract GNSTradingV6_4_1 is Delegatable {
 
             oracleRewards.setOpenLimitOrderType(sender, t.pairIndex, index, orderType);
 
-            address c = storageT.callbacks();
-            c.setTradeLastUpdated(
-                sender,
-                t.pairIndex,
-                index,
-                TradingCallbacksV6_4.TradeType.LIMIT,
-                ChainUtils.getBlockNumber()
-            );
-            c.setTradeData(sender, t.pairIndex, index, TradingCallbacksV6_4.TradeType.LIMIT, slippageP);
+            // TODO
+            // address c = storageT.callbacks();
+            // c.setTradeLastUpdated(
+            //     sender,
+            //     t.pairIndex,
+            //     index,
+            //     TradingCallbacksV6_4.TradeType.LIMIT,
+            //     ChainUtils.getBlockNumber()
+            // );
+            // c.setTradeData(sender, t.pairIndex, index, TradingCallbacksV6_4.TradeType.LIMIT, slippageP);
 
             emit OpenLimitPlaced(sender, t.pairIndex, index);
         } else {
@@ -251,7 +254,8 @@ contract GNSTradingV6_4_1 is Delegatable {
             emit MarketOrderInitiated(orderId, sender, t.pairIndex, true);
         }
 
-        referrals.registerPotentialReferrer(sender, referrer);
+        // TODO
+        // referrals.registerPotentialReferrer(sender, referrer);
     }
 
     // Close trade (MARKET)

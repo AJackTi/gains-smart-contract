@@ -24,3 +24,4 @@ const func = createDeployFunction({
 });
 
 module.exports = func;
+module.exports.tags = ["gns_token"];

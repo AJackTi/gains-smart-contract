@@ -33,15 +33,48 @@ module.exports = {
           viaIR: true,
         },
       },
+      {
+        version: "0.8.17",
+        settings: {
+          metadata: {
+            bytecodeHash: "none",
+          },
+          optimizer: {
+            enabled: true,
+            runs: 800,
+          },
+          viaIR: true,
+        },
+      },
+      {
+        version: "0.7.6",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 800,
+          },
+          metadata: {
+            // do not include the metadata hash, since this is machine dependent
+            // and we want all generated code to be deterministic
+            // https://docs.soliditylang.org/en/v0.7.6/metadata.html
+            bytecodeHash: "none",
+          },
+        },
+      },
     ],
+    overrides: {
+      "contracts/uniswap/libraries/TickBitmap.sol": { version: "0.7.6" },
+      "contracts/GNSTradingCallbacksV6_1": { version: "0.8.14" },
+    },
   },
   networks: {
     mumbai: {
       url: "https://polygon-mumbai-pokt.nodies.app",
       chainId: 80001,
-      accounts: process.env.ACCOUNT_KEYS?.split(",") || [],
+      accounts: process.env.ACCOUNT_KEYS.split(",") || [],
       allowUnlimitedContractSize: true,
     },
+    hardhat: {},
   },
   verify: {
     etherscan: {
